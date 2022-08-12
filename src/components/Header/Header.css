@@ -1,0 +1,17 @@
+.Header {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    align-items: center;
+    background-color: #fff;
+}
+
+.Header__logo {
+    justify-self: right;
+    width: 70%;
+}
+
+.Header__text {
+    margin-left: 20px;
+    font-size: 3.3rem;
+    color: #426B33;
+}

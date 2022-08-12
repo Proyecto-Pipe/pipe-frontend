@@ -1,0 +1,39 @@
+.PipeData {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 40% 40% 10% 10%;
+    grid-template-areas: "plant controls"
+                         "plant controls"
+                         "recommendations recommendations"
+                         "moreAbout moreAbout";
+}
+
+.PipeData > * {
+    height: 100%;
+    width: 100%;
+}
+
+.PipeData__plant {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-area: plant;
+    background-color: red;
+}
+
+.PipeData__plant__design {
+    width: 100%;
+}
+
+.PipeData__controls {
+    grid-area: controls;
+}
+
+.PipeData__recommendations {
+    grid-area: recommendations;
+}
+
+.PipeData__moreAbout {
+    grid-area: moreAbout;
+}

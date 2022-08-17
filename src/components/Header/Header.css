@@ -8,6 +8,8 @@
 .Header__logo {
     justify-self: right;
     width: 70%;
+    max-width: 120px;
+    max-height: 100px;
 }
 
 .Header__text {

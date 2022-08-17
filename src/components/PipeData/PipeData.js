@@ -1,17 +1,16 @@
 import React from "react";
 
+import { Plant } from "./Plant";
+
 import "./PipeData.css";
 
+import objUrl from "../../assets/3d-model.gltf";
+
 function PipeData() {
+  console.log(objUrl);
   return (
     <div className="PipeData">
-      <div className="PipeData__plant">
-        <img
-          className="PipeData__plant__design"
-          src="https://st.depositphotos.com/1169502/2025/v/450/depositphotos_20257115-stock-illustration-abstract-eco-green-plant-with.jpg"
-          alt="Ilustration of P.I.P.E"
-        />
-      </div>
+      <Plant url={objUrl} className="PipeData__plant" />
       <div className="PipeData__controls"></div>
       <div className="PipeData__recommendations"></div>
       <div className="PipeData__moreAbout">

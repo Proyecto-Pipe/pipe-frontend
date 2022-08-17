@@ -1,4 +1,7 @@
 .PipeData {
+    height: 100%;
+    width: 100%;
+
     padding: 10px;
     display: grid;
     grid-template-columns: 60% 40%;
@@ -14,18 +17,6 @@
     width: 100%;
 }
 
-.PipeData__plant {
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    grid-area: plant;
-    background-color: red;
-}
-
-.PipeData__plant__design {
-    width: 100%;
-}
-
 .PipeData__controls {
     grid-area: controls;
 }
@@ -36,4 +27,10 @@
 
 .PipeData__moreAbout {
     grid-area: moreAbout;
+}
+
+@media only screen and (min-width: 1000px){
+    .PipeData {
+    grid-template-columns: auto 600px;
+    }
 }

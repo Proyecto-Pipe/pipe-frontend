@@ -1,0 +1,10 @@
+.Plant {
+    /* display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-area: plant;
+    background-color: red; */
+    height: 100%;
+    width: 100%;
+    grid-area: plant;
+}

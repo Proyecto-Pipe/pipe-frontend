@@ -4,7 +4,7 @@ import { Plant } from "./Plant";
 
 import "./PipeData.css";
 
-import objUrl from "../../assets/3d-model.gltf";
+import objUrl from "../../assets/3d/plant_default.gltf";
 
 function PipeData() {
   console.log(objUrl);

@@ -2,16 +2,21 @@ import React from "react";
 
 import "./App.css";
 
+// Provider
+import { PipeProvider } from "../../PipeContext";
+
 // Components
 import { Header } from "../Header";
 import { PipeData } from "../PipeData";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <PipeData />
-    </div>
+    <PipeProvider>
+      <div className="App">
+        <Header />
+        <PipeData />
+      </div>
+    </PipeProvider>
   );
 }
 

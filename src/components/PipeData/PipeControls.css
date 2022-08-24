@@ -1,0 +1,30 @@
+.PipeControls > * {
+    margin-bottom: 15px;
+}
+
+.Variable {
+    padding: 7px;
+    border-radius: 15px;
+
+    display: grid;
+    grid-gap: 5px;
+    align-items: center;
+    grid-template-columns: 15px auto;
+
+    font-size: 0.9rem;
+    background-color: rgba(255, 255, 255, 0.862);
+}
+
+.Variable__img {
+    width: 100%;
+}
+
+.Variable__value__resalt {
+    white-space: nowrap;
+}
+
+.Control {
+    padding: 7px;
+    border-radius: 15px;
+    background-color: red;
+}

@@ -1,3 +1,5 @@
+### pipe-frontend
+
 # P.I.P.E
 
 [![Logo de Pipe](https://raw.githubusercontent.com/santigo171/pipe-frontend/main/src/assets/logo.png "Logo de Pipe")](# "Logo de Pipe")
@@ -24,7 +26,7 @@ El código de P.I.P.E está dividido en 3 partes. **En cada uno de los repositor
 
 - **[pipe-server:][pipe-server]** Servidor escrito con Node.js. Este recibe los datos (humedad, temperatura, luminosidad) de la placa y los envía al frontend del usuario mediante una API. Mediante la misma API recibe las peticiones (activar bombilla, activar bomba de agua) del usuario para que la placa procese y ejecute. Corre en cualquier servicio de hosting que soporte Javascript.
 
-- **[pipe-frontend:][pipe-frontend]** Página web programada con React. Muestra los datos del invernadero y envía las peticiones al servidor. Es hosteado mediante Github Pages.
+- **pipe-frontend:** Página web programada con React. Muestra los datos del invernadero y envía las peticiones al servidor. Es hosteado mediante Github Pages.
 
 ## Autores
 

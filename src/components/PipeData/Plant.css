@@ -5,7 +5,7 @@
     grid-area: plant;
 }
 
-.error_400 {
+.Plant__error {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -15,5 +15,5 @@
     font-size: 1.3rem;
     text-align: center;
     border-radius: 20px;
-    background-color: rgba(255, 96, 96, 0.51);
+    background-color: rgba(255, 96, 96, 0.726);
 }

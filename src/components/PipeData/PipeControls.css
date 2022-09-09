@@ -40,7 +40,12 @@
 }
 
 .Control:hover {
-  background-color: #fff;
+  border: 2px rgb(55, 55, 55) solid;
+}
+
+.refresh {
+  height: 25px;
+  background-color: rgba(197, 197, 197, 0.888);
 }
 
 .loading {

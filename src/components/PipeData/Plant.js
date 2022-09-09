@@ -2,6 +2,7 @@ import React from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { PipeContext } from "../../PipeContext";
+import { Refresh } from "../PipeData/PipeControls";
 
 import "./Plant.css";
 
@@ -103,9 +104,12 @@ function Plant({ url }) {
   return (
     <div className="Plant" ref={divRef}>
       {error && (
-        <div className="error_400">
+        <div className="Plant__error">
           {error === 400 && <p>No P.I.P.E. comunnication</p>}
           {error === 500 && <p>Server error</p>}
+          {error === 500 && <p>Some sensors are not working properly</p>}
+
+          <Refresh />
         </div>
       )}
     </div>

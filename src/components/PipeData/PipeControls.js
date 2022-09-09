@@ -32,7 +32,7 @@ function Control({ name, state, icon, color, callback }) {
       : "rgba(79, 79, 79, 0.566)",
   };
   return (
-    <button className="Control" style={dinamicStyle}>
+    <button onClick={callback} className="Control" style={dinamicStyle}>
       Turn {name} {!state ? "on" : "off"}
     </button>
   );
@@ -59,8 +59,6 @@ function PipeControls() {
   const formattedLastPipeConnection = lastPipeConnectionDate
     ? `Last updated: ${lpcd.toString()} `
     : "Can't get last P.I.P.E. connection";
-  console.log(lastPipeConnection);
-  console.log(formattedLastPipeConnection);
 
   return (
     <div className="PipeControls">
@@ -82,18 +80,18 @@ function PipeControls() {
         name="bulb"
         state={isBulbOn}
         callback={toggleBulb}
-        className="Control--bulb"
+        className="Control Control--bulb"
       />
 
       <Control
         name="pump"
         state={isPumpOn}
         callback={togglePump}
-        className="Control--pump"
+        className="Control Control--pump"
       />
 
       <p>{formattedLastPipeConnection}</p>
-      <button className="refresh">Refresh</button>
+      <Refresh />
 
       {loading && (
         <div className="loading">
@@ -109,4 +107,13 @@ function PipeControls() {
   );
 }
 
-export { PipeControls };
+function Refresh() {
+  const { setUpdate } = React.useContext(PipeContext);
+  return (
+    <button onClick={() => setUpdate(true)} className="Control refresh">
+      Refresh
+    </button>
+  );
+}
+
+export { PipeControls, Refresh };

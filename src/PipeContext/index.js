@@ -1,7 +1,7 @@
 import React from "react";
 
-// const pipeApiUrl = "https://pipe-server.herokuapp.com/v1/pipe";
-const pipeApiUrl = "http://localhost:5000/v1/pipe";
+const pipeApiUrl = "https://pipe-server.herokuapp.com/v1/pipe";
+// const pipeApiUrl = "http://localhost:5000/v1/pipe";
 
 const PipeContext = React.createContext();
 
@@ -27,6 +27,14 @@ function PipeProvider({ children, password }) {
     setIsBulbOn(res.isBulbOn);
     setIsPumpOn(res.isPumpOn);
     setLastPipeConnection(res.lastPipeConnection);
+    if (
+      !parseFloat(humidity) ||
+      !parseFloat(temperature) ||
+      !parseFloat(light)
+    ) {
+      console.log("Some value is not a float");
+      setError(502); // Value not a float
+    }
   }
 
   async function fetchGetPipeApi() {
@@ -55,7 +63,7 @@ function PipeProvider({ children, password }) {
         light: light,
         isBulbOn: isBulbOn,
         isPumpOn: isPumpOn,
-        // isClient: true,
+        isClient: true,
       };
       const rawRes = await fetch(pipeApiUrl, {
         method: "POST",

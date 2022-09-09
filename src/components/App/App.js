@@ -1,5 +1,7 @@
 import React from "react";
 
+import env from "react-dotenv";
+
 import "./App.css";
 
 // Provider
@@ -11,7 +13,7 @@ import { PipeData } from "../PipeData";
 
 function App() {
   return (
-    <PipeProvider>
+    <PipeProvider password={env.PASSWORD}>
       <div className="App">
         <Header />
         <PipeData />

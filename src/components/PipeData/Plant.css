@@ -1,10 +1,19 @@
 .Plant {
-    /* display: grid;
-    justify-content: center;
-    align-content: center;
-    grid-area: plant;
-    background-color: red; */
+    position: relative;
     height: 100%;
     width: 100%;
     grid-area: plant;
+}
+
+.error_400 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 10px;
+    font-size: 1.3rem;
+    text-align: center;
+    border-radius: 20px;
+    background-color: rgba(255, 96, 96, 0.51);
 }

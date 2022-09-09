@@ -1,7 +1,7 @@
 import React from "react";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { PipeContext } from "../../PipeContext";
 
 import "./Plant.css";
 
@@ -14,7 +14,7 @@ function importPlantModel(url) {
         resolve(gltf.scene);
       },
       function (xhr) {
-        console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+        // console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
       },
       function (error) {
         reject(error);
@@ -62,7 +62,6 @@ function Plant({ url }) {
       plantModel.scale.set(1.2, 1, 1.2);
       plantModel.position.z = -0.2;
       scene.add(plantModel);
-      console.log(plantModel);
 
       animatePlant = () => {
         plantModel.rotation.y += 0.01;
@@ -82,6 +81,11 @@ function Plant({ url }) {
 
     // const controls = new OrbitControls(camera, renderer.domElement);
 
+    // document.addEventListener("mousemove", (e) => {
+    //   camera.rotation.x += e.screenX * 0.0001;
+    //   camera.rotation.y += e.screenY * 0.0001;
+    // });
+
     function animate() {
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
@@ -94,13 +98,16 @@ function Plant({ url }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [divRef]);
 
+  const { error } = React.useContext(PipeContext);
+  console.log(error);
   return (
     <div className="Plant" ref={divRef}>
-      {/* <img
-        className="PipeData__plant__design"
-        src="https://st.depositphotos.com/1169502/2025/v/450/depositphotos_20257115-stock-illustration-abstract-eco-green-plant-with.jpg"
-        alt="Ilustration of P.I.P.E"
-      /> */}
+      {error && (
+        <div className="error_400">
+          {error === 400 && <p>No P.I.P.E. comunnication</p>}
+          {error === 500 && <p>Server error</p>}
+        </div>
+      )}
     </div>
   );
 }

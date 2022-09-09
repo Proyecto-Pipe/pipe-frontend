@@ -26,9 +26,14 @@ function Variable({ name, value, units, icon }) {
 }
 
 function Control({ name, state, icon, color, callback }) {
+  const dinamicStyle = {
+    backgroundColor: state
+      ? "rgba(132, 255, 44, 0.566)"
+      : "rgba(79, 79, 79, 0.566)",
+  };
   return (
-    <button className="Control">
-      Turn {name} {!state ? "On" : "Off"}
+    <button className="Control" style={dinamicStyle}>
+      Turn {name} {!state ? "on" : "off"}
     </button>
   );
 }
@@ -42,14 +47,27 @@ function PipeControls() {
     isPumpOn,
     lastPipeConnection,
     loading,
+    toggleBulb,
+    togglePump,
   } = React.useContext(PipeContext);
+
+  const lastPipeConnectionDate = lastPipeConnection
+    ? new Date(lastPipeConnection)
+    : null;
+
+  const lpcd = lastPipeConnectionDate;
+  const formattedLastPipeConnection = lastPipeConnectionDate
+    ? `Last updated: ${lpcd.toString()} `
+    : "Can't get last P.I.P.E. connection";
+  console.log(lastPipeConnection);
+  console.log(formattedLastPipeConnection);
 
   return (
     <div className="PipeControls">
       <Variable
         name="Humidity"
         value={humidity}
-        units="ºC"
+        units="%"
         icon={humidityIcon}
       />
       <Variable
@@ -59,8 +77,34 @@ function PipeControls() {
         icon={temperatureIcon}
       />
       <Variable name="Light" value={light} units="%" icon={lightIcon} />
-      <Control name="bulb" state={isBulbOn} className="Control--bulb" />
-      <Control name="pump" state={isPumpOn} className="Control--pump" />
+
+      <Control
+        name="bulb"
+        state={isBulbOn}
+        callback={toggleBulb}
+        className="Control--bulb"
+      />
+
+      <Control
+        name="pump"
+        state={isPumpOn}
+        callback={togglePump}
+        className="Control--pump"
+      />
+
+      <p>{formattedLastPipeConnection}</p>
+      <button className="refresh">Refresh</button>
+
+      {loading && (
+        <div className="loading">
+          <div className="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

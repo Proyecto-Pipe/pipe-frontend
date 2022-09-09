@@ -1,19 +1,37 @@
 .Header {
+    width: 100%;
+    max-width: 600px;
+    display: grid;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.776);
+}
+
+.Header__content {
+    height: 100%;
     display: grid;
     grid-template-columns: 25% 75%;
     align-items: center;
-    background-color: #fff;
 }
 
-.Header__logo {
+.Header__content__logo {
     justify-self: right;
-    width: 70%;
+    width: 90%;
     max-width: 120px;
     max-height: 100px;
 }
 
-.Header__text {
+.Header__content__text {
     margin-left: 20px;
     font-size: 3.3rem;
     color: #426B33;
+}
+
+@media only screen and (min-width: 600px){
+    .Header {
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+    }
+    .Header__content__logo {
+        width: 100%;
+    }
 }

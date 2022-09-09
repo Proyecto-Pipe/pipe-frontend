@@ -7,8 +7,14 @@ import logoUrl from "../../assets/logo.png";
 function Header() {
   return (
     <header className="Header">
-      <img className="Header__logo" src={logoUrl} alt="Logo de Pipe" />
-      <p className="Header__text"> P.I.P.E.</p>
+      <div className="Header__content">
+        <img
+          className="Header__content__logo"
+          src={logoUrl}
+          alt="Logo de Pipe"
+        />
+        <p className="Header__content__text"> P.I.P.E.</p>
+      </div>
     </header>
   );
 }

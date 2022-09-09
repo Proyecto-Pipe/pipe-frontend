@@ -1,6 +1,7 @@
 .PipeData {
     height: 100%;
     width: 100%;
+    max-width: 600px;
 
     padding: 10px;
     display: grid;
@@ -10,6 +11,8 @@
                          "plant controls"
                          "recommendations recommendations"
                          "moreAbout moreAbout";
+
+  background-color: rgba(255, 255, 255, 0.776);
 }
 
 .PipeData > * {
@@ -29,8 +32,10 @@
     grid-area: moreAbout;
 }
 
-@media only screen and (min-width: 1000px){
+
+@media only screen and (min-width: 600px){
     .PipeData {
-    grid-template-columns: auto 600px;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
     }
 }

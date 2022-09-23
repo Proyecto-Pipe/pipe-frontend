@@ -4,7 +4,8 @@ import { PipeContext } from "../../PipeContext";
 
 import "./PipeControls.css";
 
-import humidityIcon from "../../assets/variables/drop.png";
+import airHumidityIcon from "../../assets/variables/airHumidity.png";
+import soilHumidityIcon from "../../assets/variables/soilHumidity.png";
 import temperatureIcon from "../../assets/variables/temperature.png";
 import lightIcon from "../../assets/variables/idea.png";
 
@@ -40,33 +41,32 @@ function Control({ name, state, icon, color, callback }) {
 
 function PipeControls() {
   const {
-    humidity,
+    airHumidity,
+    soilHumidity,
     temperature,
     light,
     isBulbOn,
+    isFanOn,
     isPumpOn,
-    lastPipeConnection,
     loading,
     toggleBulb,
+    toggleFan,
     togglePump,
   } = React.useContext(PipeContext);
-
-  const lastPipeConnectionDate = lastPipeConnection
-    ? new Date(lastPipeConnection)
-    : null;
-
-  const lpcd = lastPipeConnectionDate;
-  const formattedLastPipeConnection = lastPipeConnectionDate
-    ? `Last updated: ${lpcd.toString()} `
-    : "Can't get last P.I.P.E. connection";
 
   return (
     <div className="PipeControls">
       <Variable
-        name="Humidity"
-        value={humidity}
+        name="Air humidity"
+        value={airHumidity}
         units="%"
-        icon={humidityIcon}
+        icon={airHumidityIcon}
+      />
+      <Variable
+        name="Soil humidity"
+        value={soilHumidity}
+        units="%"
+        icon={soilHumidityIcon}
       />
       <Variable
         name="Temperature"
@@ -80,18 +80,22 @@ function PipeControls() {
         name="bulb"
         state={isBulbOn}
         callback={toggleBulb}
-        className="Control Control--bulb"
+        className="Control--bulb"
+      />
+
+      <Control
+        name="fan"
+        state={isFanOn}
+        callback={toggleFan}
+        className="Control--fan"
       />
 
       <Control
         name="pump"
         state={isPumpOn}
         callback={togglePump}
-        className="Control Control--pump"
+        className="Control--pump"
       />
-
-      <p>{formattedLastPipeConnection}</p>
-      <Refresh />
 
       {loading && (
         <div className="loading">
@@ -107,13 +111,4 @@ function PipeControls() {
   );
 }
 
-function Refresh() {
-  const { setUpdate } = React.useContext(PipeContext);
-  return (
-    <button onClick={() => setUpdate(true)} className="Control refresh">
-      Refresh
-    </button>
-  );
-}
-
-export { PipeControls, Refresh };
+export { PipeControls };

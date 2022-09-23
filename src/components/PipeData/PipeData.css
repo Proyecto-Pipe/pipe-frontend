@@ -1,41 +1,17 @@
 .PipeData {
-    height: 100%;
-    width: 100%;
-    max-width: 600px;
+  height: 100%;
+  width: 100%;
+  max-width: 600px;
 
-    padding: 10px;
-    display: grid;
-    grid-template-columns: 60% 40%;
-    grid-template-rows: 40% 40% 10% 10%;
-    grid-template-areas: "plant controls"
-                         "plant controls"
-                         "recommendations recommendations"
-                         "moreAbout moreAbout";
-
-  background-color: rgba(255, 255, 255, 0.776);
-}
-
-.PipeData > * {
-    height: 100%;
-    width: 100%;
+  padding: 10px;
+  display: grid;
+  /* grid-template-columns: 60% 40%; */
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "plant plant"
+    "controls controls";
 }
 
 .PipeData__controls {
-    grid-area: controls;
-}
-
-.PipeData__recommendations {
-    grid-area: recommendations;
-}
-
-.PipeData__moreAbout {
-    grid-area: moreAbout;
-}
-
-
-@media only screen and (min-width: 600px){
-    .PipeData {
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
-    }
+  grid-area: controls;
 }

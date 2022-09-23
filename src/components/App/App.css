@@ -1,8 +1,13 @@
 body {
-  background: rgb(24,204,25);
+  background: rgb(24, 204, 25);
   /* background: linear-gradient(90deg, rgba(24,204,25,1) 0%, rgba(200,208,12,1) 51%, rgba(0,255,244,1) 100%); */
   /* animation: bg-transition 10s cubic-bezier(0.5, 0, 0.5, 1) infinite; */
-  background: linear-gradient(90deg, rgb(171, 226, 78) 0%, rgba(200,208,12,1) 51%, rgba(0,255,244,1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(171, 226, 78) 0%,
+    rgba(200, 208, 12, 1) 51%,
+    rgba(0, 255, 244, 1) 100%
+  );
 }
 
 body::before {
@@ -12,19 +17,35 @@ body::before {
   display: block;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(90deg, rgba(0,189,255,1) 0%, rgba(245,255,0,1) 51%, rgba(100,153,216,1) 80%, rgba(139,204,24,1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(245, 255, 0, 1) 0%,
+    rgba(0, 189, 255, 1) 51%,
+    rgba(100, 153, 216, 1) 80%,
+    rgba(139, 204, 24, 1) 100%
+  );
   z-index: -1;
   animation: bg-transition-1 10s infinite;
   opacity: 0;
 }
 
+.UI {
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+}
+
 .App {
   height: 100vh;
   width: 100vw;
+
+  /* max-width: 600px; */
+
   display: grid;
-  grid-template-rows: 100px auto;
+  grid-template-rows: 100px auto 60px;
   justify-items: center;
-  z-index: 1;
+
+  background-color: rgba(255, 255, 255, 0.658);
 }
 
 @keyframes bg-transition-1 {

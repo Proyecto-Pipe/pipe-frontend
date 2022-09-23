@@ -2,7 +2,7 @@ import React from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { PipeContext } from "../../PipeContext";
-import { Refresh } from "../PipeData/PipeControls";
+import { Refresh } from "../Refresh";
 
 import "./Plant.css";
 
@@ -46,9 +46,10 @@ function Plant({ url }) {
       0.1,
       1000
     );
-    camera.position.z = 4;
-    camera.position.y = 4.8;
-    camera.rotation.x = 251;
+    camera.position.z = 13;
+    camera.position.y = 6.8;
+    // camera.rotation.x = 251;
+    camera.rotation.x = 250.9;
 
     // renderer
     const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -61,17 +62,16 @@ function Plant({ url }) {
     async function insertPlantModel() {
       const plantModel = await importPlantModel(url);
       plantModel.scale.set(1.2, 1, 1.2);
-      plantModel.position.z = -0.2;
       scene.add(plantModel);
 
       animatePlant = () => {
-        plantModel.rotation.y += 0.01;
+        plantModel.rotation.y += 0.003;
       };
     }
     insertPlantModel();
 
     // Light
-    const pointLight = new THREE.AmbientLight(0xffffff, 2);
+    const pointLight = new THREE.AmbientLight(0xffffff, 1.2);
     pointLight.position.set(0, 10, 0);
     scene.add(pointLight);
 
@@ -79,13 +79,6 @@ function Plant({ url }) {
     // const lightHelper = new THREE.PointLightHelper(pointLight);
     // const gridHelper = new THREE.GridHelper(200, 50);
     // scene.add(lightHelper, gridHelper);
-
-    // const controls = new OrbitControls(camera, renderer.domElement);
-
-    // document.addEventListener("mousemove", (e) => {
-    //   camera.rotation.x += e.screenX * 0.0001;
-    //   camera.rotation.y += e.screenY * 0.0001;
-    // });
 
     function animate() {
       requestAnimationFrame(animate);
@@ -99,19 +92,37 @@ function Plant({ url }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [divRef]);
 
-  const { error } = React.useContext(PipeContext);
-  console.log(error);
+  const { error, lastPipeConnection } = React.useContext(PipeContext);
+
+  const lastPipeConnectionDate = lastPipeConnection
+    ? new Date(lastPipeConnection)
+    : null;
+
+  const lpcd = lastPipeConnectionDate;
+  const formattedLastPipeConnection = lpcd
+    ? `Last updated: ${lpcd
+        .toString()
+        .replace("GMT-0500", "")
+        .replace(" Standard Time)", "")
+        .replace("(", "")} `
+    : "Can't get last P.I.P.E. connection";
+
   return (
     <div className="Plant" ref={divRef}>
       {error && (
         <div className="Plant__error">
           {error === 400 && <p>No P.I.P.E. comunnication</p>}
-          {error === 500 && <p>Server error</p>}
-          {error === 500 && <p>Some sensors are not working properly</p>}
-
+          {error === 500 && <p>Server error. Please retry</p>}
+          {error === 502 && <p>Some sensors are not working properly</p>}
           <Refresh />
         </div>
       )}
+      {lastPipeConnection && (
+        <p className="Plant__lastPipeConnection">
+          {formattedLastPipeConnection}
+        </p>
+      )}
+      {!error && <Refresh />}
     </div>
   );
 }

@@ -6,10 +6,12 @@ const pipeApiUrl = "https://pipe-server.herokuapp.com/v1/pipe";
 const PipeContext = React.createContext();
 
 function PipeProvider({ children, password }) {
-  const [humidity, setHumidity] = React.useState(100);
-  const [temperature, setTemperature] = React.useState(13);
-  const [light, setLight] = React.useState(100);
-  const [isBulbOn, setIsBulbOn] = React.useState(1);
+  const [airHumidity, setAirHumidity] = React.useState(null);
+  const [soilHumidity, setSoilHumidity] = React.useState(null);
+  const [temperature, setTemperature] = React.useState(null);
+  const [light, setLight] = React.useState(null);
+  const [isBulbOn, setIsBulbOn] = React.useState(null);
+  const [isFanOn, setIsFanOn] = React.useState(null);
   const [isPumpOn, setIsPumpOn] = React.useState(null);
   const [lastPipeConnection, setLastPipeConnection] = React.useState(null);
 
@@ -18,17 +20,19 @@ function PipeProvider({ children, password }) {
   const [update, setUpdate] = React.useState(true);
 
   function updateUi(res) {
-    console.log(res);
     if (res.message === "No pipe comunication") return setError(400);
     else setError(false);
-    setHumidity(res.humidity);
+    setAirHumidity(res.airHumidity);
+    setSoilHumidity(res.soilHumidity);
     setTemperature(res.temperature);
     setLight(res.light);
     setIsBulbOn(res.isBulbOn);
+    setIsFanOn(res.isFanOn);
     setIsPumpOn(res.isPumpOn);
     setLastPipeConnection(res.lastPipeConnection);
     if (
-      !parseFloat(humidity) ||
+      !parseFloat(airHumidity) ||
+      !parseFloat(soilHumidity) ||
       !parseFloat(temperature) ||
       !parseFloat(light)
     ) {
@@ -54,14 +58,15 @@ function PipeProvider({ children, password }) {
   }
 
   async function fetchPostPipeApi() {
-    console.log("A");
     try {
       setLoading(true);
       const body = {
-        humidity: humidity,
+        airHumidity: airHumidity,
+        soilHumidity: soilHumidity,
         temperature: temperature,
         light: light,
         isBulbOn: isBulbOn,
+        isFanOn: isFanOn,
         isPumpOn: isPumpOn,
         isClient: true,
       };
@@ -83,10 +88,16 @@ function PipeProvider({ children, password }) {
     if (update === false) return;
     fetchGetPipeApi();
     setUpdate(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [update]);
 
   function toggleBulb() {
     setIsBulbOn(!isBulbOn);
+    fetchPostPipeApi();
+  }
+
+  function toggleFan() {
+    setIsFanOn(!isFanOn);
     fetchPostPipeApi();
   }
 
@@ -98,16 +109,19 @@ function PipeProvider({ children, password }) {
   return (
     <PipeContext.Provider
       value={{
-        humidity,
+        airHumidity,
+        soilHumidity,
         temperature,
         light,
         isBulbOn,
+        isFanOn,
         isPumpOn,
         lastPipeConnection,
         setUpdate,
         error,
         loading,
         toggleBulb,
+        toggleFan,
         togglePump,
       }}
     >

@@ -1,0 +1,11 @@
+.Refresh {
+  width: 100%;
+  margin: 5px;
+  border-radius: 15px;
+  height: 40px;
+  background-color: rgba(197, 197, 197, 0.888);
+}
+
+.Refresh:hover {
+  border: 2px rgb(255, 255, 255) solid;
+}

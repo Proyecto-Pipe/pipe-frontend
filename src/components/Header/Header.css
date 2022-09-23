@@ -1,9 +1,6 @@
 .Header {
-    width: 100%;
-    max-width: 600px;
     display: grid;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.776);
 }
 
 .Header__content {
@@ -27,10 +24,6 @@
 }
 
 @media only screen and (min-width: 600px){
-    .Header {
-        border-top-left-radius: 25px;
-        border-top-right-radius: 25px;
-    }
     .Header__content__logo {
         width: 100%;
     }

@@ -10,13 +10,17 @@ import { PipeProvider } from "../../PipeContext";
 // Components
 import { Header } from "../Header";
 import { PipeData } from "../PipeData";
+import { Footer } from "../Footer/Footer";
 
 function App() {
   return (
     <PipeProvider password={env.PASSWORD}>
-      <div className="App">
-        <Header />
-        <PipeData />
+      <div className="UI">
+        <div className="App">
+          <Header />
+          <PipeData />
+          <Footer />
+        </div>
       </div>
     </PipeProvider>
   );

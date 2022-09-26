@@ -28,9 +28,8 @@ function Variable({ name, value, units, icon }) {
 
 function Control({ name, state, icon, color, callback }) {
   const dinamicStyle = {
-    backgroundColor: state
-      ? "rgba(132, 255, 44, 0.566)"
-      : "rgba(79, 79, 79, 0.566)",
+    backgroundColor:
+      state === 1 ? "rgba(132, 255, 44, 0.566)" : "rgba(79, 79, 79, 0.566)",
   };
   return (
     <button onClick={callback} className="Control" style={dinamicStyle}>

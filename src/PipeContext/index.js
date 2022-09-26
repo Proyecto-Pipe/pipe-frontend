@@ -20,6 +20,7 @@ function PipeProvider({ children, password }) {
   const [update, setUpdate] = React.useState(true);
 
   function updateUi(res) {
+    console.log(res);
     if (res.message === "No pipe comunication") return setError(400);
     else setError(false);
     setAirHumidity(res.airHumidity);
@@ -46,7 +47,11 @@ function PipeProvider({ children, password }) {
       setLoading(true);
       const rawRes = await fetch(pipeApiUrl, {
         method: "GET",
-        headers: { "Access-Control-Allow-Origin": "*", password: password },
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          password: password,
+          "is-client": true,
+        },
       });
       setLoading(false);
       const res = await rawRes.json();
@@ -72,7 +77,11 @@ function PipeProvider({ children, password }) {
       };
       const rawRes = await fetch(pipeApiUrl, {
         method: "POST",
-        headers: { "Access-Control-Allow-Origin": "*", password: password },
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          password: password,
+          "is-client": true,
+        },
         body: JSON.stringify(body),
       });
       setLoading(false);
@@ -90,6 +99,12 @@ function PipeProvider({ children, password }) {
     setUpdate(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [update]);
+
+  React.useEffect(() => {
+    setInterval(() => {
+      setUpdate(true);
+    }, 2000);
+  }, []);
 
   function toggleBulb() {
     setIsBulbOn(!isBulbOn);

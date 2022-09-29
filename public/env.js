@@ -1,3 +1,1 @@
-window.env = {
-  "PASSWORD": "329"
-};
+window.env = {};

@@ -1,16 +1,14 @@
 import React from "react";
 
-import { ViewsContext } from "./index.js";
+import { ViewsContext } from "../../ViewsContext";
 
 import "./ViewManager.css";
-
-function ViewRenderer(views, currentViewIndex) {
-  return views[currentViewIndex].view;
-}
 
 function ViewManager() {
   const { views, currentViewIndex, setCurrentViewIndex } =
     React.useContext(ViewsContext);
+
+  console.log(currentViewIndex);
 
   function Arrow({ left }) {
     const onClick = () => {
@@ -40,4 +38,4 @@ function ViewManager() {
   );
 }
 
-export { ViewManager, ViewRenderer };
+export { ViewManager };

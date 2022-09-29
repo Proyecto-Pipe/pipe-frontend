@@ -4,6 +4,7 @@
   border-radius: 15px;
   height: 40px;
   background-color: rgba(197, 197, 197, 0.888);
+  z-index: 10;
 }
 
 .Refresh:hover {

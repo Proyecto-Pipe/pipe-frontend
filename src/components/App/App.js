@@ -6,22 +6,27 @@ import "./App.css";
 
 // Provider
 import { PipeProvider } from "../../PipeContext";
+import { ViewRenderer } from "../../ViewsContext/ViewManager.js";
+import { ViewsContext, ViewsProvider } from "../../ViewsContext";
 
 // Components
 import { Header } from "../Header";
-import { PipeData } from "../PipeData";
 import { Footer } from "../Footer/Footer";
 
 function App() {
+  const { views, currentViewIndex } = React.useContext(ViewsContext);
+
   return (
     <PipeProvider password={env.PASSWORD}>
-      <div className="UI">
-        <div className="App">
-          <Header />
-          <PipeData />
-          <Footer />
+      <ViewsProvider>
+        <div className="UI">
+          <div className="App">
+            <Header />
+            <ViewRenderer views={views} currentViewIndex={currentViewIndex} />
+            <Footer />
+          </div>
         </div>
-      </div>
+      </ViewsProvider>
     </PipeProvider>
   );
 }

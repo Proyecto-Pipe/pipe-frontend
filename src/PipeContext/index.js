@@ -10,26 +10,23 @@ function PipeProvider({ children, password }) {
   const [soilHumidity, setSoilHumidity] = React.useState(null);
   const [temperature, setTemperature] = React.useState(null);
   const [light, setLight] = React.useState(null);
-  const [isBulbOn, setIsBulbOn] = React.useState(null);
-  const [isFanOn, setIsFanOn] = React.useState(null);
-  const [isPumpOn, setIsPumpOn] = React.useState(null);
+  const [isBulbOn, setIsBulbOn] = React.useState(0);
+  const [isFanOn, setIsFanOn] = React.useState(0);
+  const [isPumpOn, setIsPumpOn] = React.useState(0);
   const [lastPipeConnection, setLastPipeConnection] = React.useState(null);
 
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
   const [update, setUpdate] = React.useState(true);
+  const [silent, setSilent] = React.useState(false);
 
   function updateUi(res) {
-    console.log(res);
     if (res.message === "No pipe comunication") return setError(400);
     else setError(false);
     setAirHumidity(res.airHumidity);
     setSoilHumidity(res.soilHumidity);
     setTemperature(res.temperature);
     setLight(res.light);
-    setIsBulbOn(res.isBulbOn);
-    setIsFanOn(res.isFanOn);
-    setIsPumpOn(res.isPumpOn);
     setLastPipeConnection(res.lastPipeConnection);
     if (
       !parseFloat(airHumidity) ||
@@ -37,14 +34,13 @@ function PipeProvider({ children, password }) {
       !parseFloat(temperature) ||
       !parseFloat(light)
     ) {
-      console.log("Some value is not a float");
       setError(502); // Value not a float
     }
   }
 
   async function fetchGetPipeApi() {
     try {
-      setLoading(true);
+      if (!silent) setLoading(true);
       const rawRes = await fetch(pipeApiUrl, {
         method: "GET",
         headers: {
@@ -53,9 +49,12 @@ function PipeProvider({ children, password }) {
           "is-client": true,
         },
       });
-      setLoading(false);
       const res = await rawRes.json();
-      updateUi(res);
+      if (!silent) setLoading(false);
+      setSilent(false);
+      if (res.lastPipeConnection !== lastPipeConnection) {
+        updateUi(res);
+      }
     } catch (err) {
       setLoading(false);
       setError(500);
@@ -65,28 +64,26 @@ function PipeProvider({ children, password }) {
   async function fetchPostPipeApi() {
     try {
       setLoading(true);
-      const body = {
-        airHumidity: airHumidity,
-        soilHumidity: soilHumidity,
-        temperature: temperature,
-        light: light,
+      const body = JSON.stringify({
         isBulbOn: isBulbOn,
         isFanOn: isFanOn,
         isPumpOn: isPumpOn,
-        isClient: true,
-      };
+      });
+      console.log(body);
       const rawRes = await fetch(pipeApiUrl, {
         method: "POST",
         headers: {
           "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
           password: password,
           "is-client": true,
         },
-        body: JSON.stringify(body),
+        body: body,
       });
-      setLoading(false);
       const res = await rawRes.json();
-      updateUi(res);
+      console.log(res);
+      setLoading(false);
+      // updateUi(res);
     } catch (err) {
       setLoading(false);
       setError(500);
@@ -102,24 +99,45 @@ function PipeProvider({ children, password }) {
 
   React.useEffect(() => {
     setInterval(() => {
+      setSilent(true);
       setUpdate(true);
     }, 2000);
   }, []);
 
-  function toggleBulb() {
-    setIsBulbOn(!isBulbOn);
+  React.useEffect(() => {
+    console.log("A");
     fetchPostPipeApi();
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isBulbOn, isFanOn, isPumpOn]);
+  // async function toggleBulb() {
+  //   console.log(isBulbOn);
+  //   if (isBulbOn === 0) {
+  //     console.log("HOLA");
+  //     setIsBulbOn(10);
+  //   } else {
+  //     console.log("CHAO");
+  //     setIsBulbOn(10);
+  //   }
+  //   await fetchPostPipeApi();
+  // }
 
-  function toggleFan() {
-    setIsFanOn(!isFanOn);
-    fetchPostPipeApi();
-  }
+  // async function toggleFan() {
+  //   if (isFanOn === 0) {
+  //     setIsFanOn(1);
+  //   } else {
+  //     setIsFanOn(0);
+  //   }
+  //   await fetchPostPipeApi();
+  // }
 
-  function togglePump() {
-    setIsPumpOn(!isPumpOn);
-    fetchPostPipeApi();
-  }
+  // async function togglePump() {
+  //   if (isPumpOn === 0) {
+  //     setIsPumpOn(1);
+  //   } else {
+  //     setIsPumpOn(0);
+  //   }
+  //   await fetchPostPipeApi();
+  // }
 
   return (
     <PipeContext.Provider
@@ -131,13 +149,16 @@ function PipeProvider({ children, password }) {
         isBulbOn,
         isFanOn,
         isPumpOn,
+        setIsBulbOn,
+        setIsFanOn,
+        setIsPumpOn,
         lastPipeConnection,
         setUpdate,
         error,
         loading,
-        toggleBulb,
-        toggleFan,
-        togglePump,
+        // toggleBulb,
+        // toggleFan,
+        // togglePump,
       }}
     >
       {children}

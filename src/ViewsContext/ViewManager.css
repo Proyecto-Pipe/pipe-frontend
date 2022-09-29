@@ -1,0 +1,21 @@
+.ViewManager {
+  /* position: absolute; */
+  top: 0;
+
+  display: grid;
+  grid-template-columns: 70px auto 70px;
+  align-items: center;
+  text-align: center;
+  font-size: 1.2rem;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.582);
+  border-radius: 25px;
+}
+
+.Arrow {
+  height: 100%;
+  width: 100%;
+  font-size: 1.3rem;
+  font-weight: 300;
+  background-color: transparent;
+}

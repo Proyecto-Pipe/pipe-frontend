@@ -1,30 +1,31 @@
 .Header {
-    display: grid;
-    justify-content: center;
+  display: grid;
+  justify-content: center;
 }
 
 .Header__content {
-    height: 100%;
-    display: grid;
-    grid-template-columns: 25% 75%;
-    align-items: center;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  align-items: center;
 }
 
 .Header__content__logo {
-    justify-self: right;
-    width: 90%;
-    max-width: 120px;
-    max-height: 100px;
+  justify-self: right;
+  width: 90%;
+  max-width: 120px;
+  max-height: 100px;
 }
 
 .Header__content__text {
-    margin-left: 20px;
-    font-size: 3.3rem;
-    color: #426B33;
+  margin-left: 20px;
+  font-size: 3.3rem;
+  color: #426b33;
+  text-align: center;
 }
 
-@media only screen and (min-width: 600px){
-    .Header__content__logo {
-        width: 100%;
-    }
+@media only screen and (min-width: 600px) {
+  .Header__content__logo {
+    width: 100%;
+  }
 }

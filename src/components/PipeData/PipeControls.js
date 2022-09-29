@@ -48,9 +48,9 @@ function PipeControls() {
     isFanOn,
     isPumpOn,
     loading,
-    toggleBulb,
-    toggleFan,
-    togglePump,
+    setIsBulbOn,
+    setIsFanOn,
+    setIsPumpOn,
   } = React.useContext(PipeContext);
 
   return (
@@ -78,21 +78,21 @@ function PipeControls() {
       <Control
         name="bulb"
         state={isBulbOn}
-        callback={toggleBulb}
+        callback={() => setIsBulbOn(isBulbOn === 0 ? 1 : 0)}
         className="Control--bulb"
       />
 
       <Control
         name="fan"
         state={isFanOn}
-        callback={toggleFan}
+        callback={() => setIsFanOn(isFanOn === 0 ? 1 : 0)}
         className="Control--fan"
       />
 
       <Control
         name="pump"
         state={isPumpOn}
-        callback={togglePump}
+        callback={() => setIsPumpOn(isPumpOn === 0 ? 1 : 0)}
         className="Control--pump"
       />
 

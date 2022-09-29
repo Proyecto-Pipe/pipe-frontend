@@ -4,6 +4,9 @@ import "./Header.css";
 
 import logoUrl from "../../assets/logo.png";
 
+import { ViewManager } from "../../ViewsContext/ViewManager.js";
+import { ViewsProvider } from "../../ViewsContext";
+
 function Header() {
   return (
     <header className="Header">
@@ -15,6 +18,9 @@ function Header() {
         />
         <p className="Header__content__text"> P.I.P.E.</p>
       </div>
+      <ViewsProvider>
+        <ViewManager />
+      </ViewsProvider>
     </header>
   );
 }

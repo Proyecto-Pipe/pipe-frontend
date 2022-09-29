@@ -19,5 +19,7 @@
 }
 
 .Plant__lastPipeConnection {
+  position: absolute;
+  bottom: 0;
   font-size: 1rem;
 }

@@ -1,7 +1,5 @@
 import React from "react";
 
-import env from "react-dotenv";
-
 import "./App.css";
 
 // Provider

@@ -38,7 +38,7 @@ function WhatIsPipe() {
           Encuentre la documentación completa de la creación, planos,
           viabilidad, código, montaje, en{" "}
           <a
-            href="https://github.com/santigo171/pipe-server"
+            href="https://github.com/proyecto-pipe/pipe-server"
             target="_blank"
             rel="noopener noreferrer"
           >

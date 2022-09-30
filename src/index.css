@@ -52,3 +52,12 @@ body::before {
     opacity: 0;
   }
 }
+
+a {
+  color: rgb(78, 89, 104);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(133, 150, 173);
+}

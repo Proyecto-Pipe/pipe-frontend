@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -9,5 +9,46 @@
 
 body {
   font-size: 62.5%;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+
+  background: rgb(24, 204, 25);
+  /* background: linear-gradient(90deg, rgba(24,204,25,1) 0%, rgba(200,208,12,1) 51%, rgba(0,255,244,1) 100%); */
+  /* animation: bg-transition 10s cubic-bezier(0.5, 0, 0.5, 1) infinite; */
+  background: linear-gradient(
+    90deg,
+    rgb(171, 226, 78) 0%,
+    rgba(200, 208, 12, 1) 51%,
+    rgba(0, 255, 244, 1) 100%
+  );
+}
+
+body::before {
+  position: absolute;
+  top: 0;
+  content: "";
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    90deg,
+    rgba(245, 255, 0, 1) 0%,
+    rgba(0, 189, 255, 1) 51%,
+    rgba(100, 153, 216, 1) 80%,
+    rgba(139, 204, 24, 1) 100%
+  );
+  z-index: -1;
+  animation: bg-transition-1 10s infinite;
+  opacity: 0;
+}
+
+@keyframes bg-transition-1 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

@@ -5,7 +5,6 @@ import "./Header.css";
 import logoUrl from "../../assets/logo.png";
 
 import { ViewManager } from "../ViewManager";
-// import { ViewsProvider } from "../../ViewsContext";
 
 function Header() {
   return (
@@ -18,9 +17,7 @@ function Header() {
         />
         <p className="Header__content__text"> P.I.P.E.</p>
       </div>
-      {/* <ViewsProvider> */}
       <ViewManager />
-      {/* </ViewsProvider> */}
     </header>
   );
 }

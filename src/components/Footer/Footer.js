@@ -5,6 +5,13 @@ import "./Footer.css";
 function Footer() {
   return (
     <div className="Footer">
+      <a
+        href="https://www.instagram.com/proyecto_p.i.p.e/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Instagram @proyecto_p.i.p.e
+      </a>
       <p>Zaida Guzmán, Julian Franco, David Hurtado</p>
       <a
         href="https://agustinianonorte.edu.co/"

@@ -1,5 +1,4 @@
 .ViewManager {
-  /* position: absolute; */
   top: 0;
 
   width: 300px;
@@ -20,4 +19,12 @@
   font-size: 1.3rem;
   font-weight: 300;
   background-color: transparent;
+}
+
+@media only screen and (min-width: 600px) {
+  .ViewManager {
+    min-width: 300px;
+    max-width: 100%;
+    height: 50px;
+  }
 }

@@ -15,8 +15,7 @@ import { Footer } from "../Footer/Footer";
 
 function App() {
   return (
-    <PipeProvider password={env.PASSWORD}>
-      {/* <PipeProvider password={329}> */}
+    <PipeProvider password={329}>
       <div className="UI">
         <div className="App">
           <ViewsProvider>

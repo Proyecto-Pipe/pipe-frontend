@@ -33,7 +33,8 @@ function Control({ name, state, icon, color, callback }) {
   };
   return (
     <button onClick={callback} className="Control" style={dinamicStyle}>
-      Turn {name} {!state ? "on" : "off"}
+      {!state ? "Activar " : "Desactivar "}
+      {name}
     </button>
   );
 }
@@ -56,41 +57,41 @@ function PipeControls() {
   return (
     <div className="PipeControls">
       <Variable
-        name="Air humidity"
+        name="Humedad del aire"
         value={airHumidity}
         units="%"
         icon={airHumidityIcon}
       />
       <Variable
-        name="Soil humidity"
+        name="Humedad del suelo"
         value={soilHumidity}
         units="%"
         icon={soilHumidityIcon}
       />
       <Variable
-        name="Temperature"
+        name="Temperatura"
         value={temperature}
         units="ºC"
         icon={temperatureIcon}
       />
-      <Variable name="Light" value={light} units="%" icon={lightIcon} />
+      <Variable name="Luminosidad" value={light} units="%" icon={lightIcon} />
 
       <Control
-        name="bulb"
+        name="bombilla"
         state={isBulbOn}
         callback={() => setIsBulbOn(isBulbOn === 0 ? 1 : 0)}
         className="Control--bulb"
       />
 
       <Control
-        name="fan"
+        name="ventilador"
         state={isFanOn}
         callback={() => setIsFanOn(isFanOn === 0 ? 1 : 0)}
         className="Control--fan"
       />
 
       <Control
-        name="pump"
+        name="bomba de agua"
         state={isPumpOn}
         callback={() => setIsPumpOn(isPumpOn === 0 ? 1 : 0)}
         className="Control--pump"

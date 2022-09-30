@@ -7,7 +7,7 @@ function Refresh() {
   const { setUpdate } = React.useContext(PipeContext);
   return (
     <button onClick={() => setUpdate(true)} className="Refresh">
-      Reload P.I.P.E
+      Actualizar P.I.P.E.
     </button>
   );
 }

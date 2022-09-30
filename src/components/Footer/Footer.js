@@ -5,11 +5,16 @@ import "./Footer.css";
 function Footer() {
   return (
     <div className="Footer">
-      <div className="Footer__moreAbout">Icons by Flaticon and Freepik</div>
-
-      <a href="http://" target="_blank" rel="noopener noreferrer">
-        Learn more about P.I.P.E
+      <p>Zaida Guzmán, Julian Franco, David Hurtado</p>
+      <a
+        href="https://agustinianonorte.edu.co/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Colegio Agustiniano Norte
       </a>
+
+      <div className="Footer__moreAbout">Icons by Flaticon and Freepik</div>
     </div>
   );
 }

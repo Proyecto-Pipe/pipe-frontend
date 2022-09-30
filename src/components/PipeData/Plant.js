@@ -100,20 +100,24 @@ function Plant({ url }) {
 
   const lpcd = lastPipeConnectionDate;
   const formattedLastPipeConnection = lpcd
-    ? `Last updated: ${lpcd
+    ? `Última conexión: ${lpcd
         .toString()
         .replace("GMT-0500", "")
         .replace(" Standard Time)", "")
         .replace("(", "")} `
-    : "Can't get last P.I.P.E. connection";
+    : "No se pudo obtener última conexión con P.I.P.E.";
 
   return (
     <div className="Plant" ref={divRef}>
       {error && (
         <div className="Plant__error">
-          {error === 400 && <p>No P.I.P.E. comunnication</p>}
-          {error === 500 && <p>Server error. Please retry</p>}
-          {error === 502 && <p>Some sensors are not working properly</p>}
+          {error === 400 && <p>No hay comunicación con P.I.P.E.</p>}
+          {error === 500 && (
+            <p>Error del servidor, porfavor, recargar página</p>
+          )}
+          {error === 502 && (
+            <p>Algunos sensores no están funcionando adecuadamente</p>
+          )}
           <Refresh />
         </div>
       )}

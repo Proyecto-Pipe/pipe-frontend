@@ -8,8 +8,6 @@ function ViewManager() {
   const { views, currentViewIndex, setCurrentViewIndex } =
     React.useContext(ViewsContext);
 
-  console.log(currentViewIndex);
-
   function Arrow({ left }) {
     const onClick = () => {
       if (left) {

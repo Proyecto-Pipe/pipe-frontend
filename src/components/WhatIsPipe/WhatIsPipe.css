@@ -1,0 +1,87 @@
+.WhatIsPipe {
+  margin-top: 0px;
+  max-width: 600px;
+
+  display: grid;
+  grid-template-rows: repeat(3, 32%);
+  row-gap: 10px;
+
+  justify-items: center;
+  align-items: center;
+}
+
+.box1 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 35% auto;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.box1__image {
+  justify-self: end;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.box1__text__title {
+  font-size: 1.2rem;
+}
+.box1__text__info {
+  font-size: 0.9rem;
+}
+
+.box2 {
+  height: 100%;
+  width: 100%;
+}
+
+.box2__title {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.box2__video {
+  width: 100%;
+  height: 100%;
+}
+
+.box3 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 35%;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.box3__text {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.box3__image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .box1__text__title {
+    padding-left: 10px;
+    font-size: 1.7rem;
+    margin-bottom: 13px;
+  }
+  .box1__text__info {
+    padding-left: 10px;
+    font-size: 1.1rem;
+  }
+  .box2__title {
+    font-size: 1.3rem;
+  }
+  .box3__text {
+    font-size: 1.1rem;
+    padding-right: 10px;
+  }
+}

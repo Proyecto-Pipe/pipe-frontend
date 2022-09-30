@@ -69,7 +69,6 @@ function PipeProvider({ children, password }) {
         isFanOn: isFanOn,
         isPumpOn: isPumpOn,
       });
-      console.log(body);
       const rawRes = await fetch(pipeApiUrl, {
         method: "POST",
         headers: {
@@ -81,7 +80,6 @@ function PipeProvider({ children, password }) {
         body: body,
       });
       const res = await rawRes.json();
-      console.log(res);
       setLoading(false);
       // updateUi(res);
     } catch (err) {
@@ -105,39 +103,9 @@ function PipeProvider({ children, password }) {
   }, []);
 
   React.useEffect(() => {
-    console.log("A");
     fetchPostPipeApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBulbOn, isFanOn, isPumpOn]);
-  // async function toggleBulb() {
-  //   console.log(isBulbOn);
-  //   if (isBulbOn === 0) {
-  //     console.log("HOLA");
-  //     setIsBulbOn(10);
-  //   } else {
-  //     console.log("CHAO");
-  //     setIsBulbOn(10);
-  //   }
-  //   await fetchPostPipeApi();
-  // }
-
-  // async function toggleFan() {
-  //   if (isFanOn === 0) {
-  //     setIsFanOn(1);
-  //   } else {
-  //     setIsFanOn(0);
-  //   }
-  //   await fetchPostPipeApi();
-  // }
-
-  // async function togglePump() {
-  //   if (isPumpOn === 0) {
-  //     setIsPumpOn(1);
-  //   } else {
-  //     setIsPumpOn(0);
-  //   }
-  //   await fetchPostPipeApi();
-  // }
 
   return (
     <PipeContext.Provider
@@ -156,9 +124,6 @@ function PipeProvider({ children, password }) {
         setUpdate,
         error,
         loading,
-        // toggleBulb,
-        // toggleFan,
-        // togglePump,
       }}
     >
       {children}

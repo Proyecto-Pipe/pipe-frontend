@@ -12,7 +12,9 @@ function Footer() {
       >
         Instagram @proyecto_p.i.p.e
       </a>
-      <p>Zaida Guzmán, Julian Franco, David Hurtado</p>
+      <p>
+        Zaida Guzmán, Julian Franco, David Hurtado, profesor William Granada
+      </p>
       <a
         href="https://agustinianonorte.edu.co/"
         target="_blank"

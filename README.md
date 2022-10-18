@@ -6,7 +6,7 @@
 
 ### Proyecto Invernadero Pedagógico Estudiantil
 
-Presentación el proyecto: https://drive.google.com/file/d/1l-ndVBoZgVm_VMkF270SU4DZTlN-6F5f/view?usp=sharing
+Presentación el proyecto: https://youtu.be/kD3DB3PJZvg
 
 **P.I.P.E** es un invernadero inteligente enfocado a instituciones educativas que busca promover en sus estudiantes un compromiso hacia el medio ambiente.
 

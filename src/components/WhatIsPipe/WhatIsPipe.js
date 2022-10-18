@@ -29,7 +29,7 @@ function WhatIsPipe() {
         <iframe
           className="box2__video"
           title="Elevator Pitch"
-          src="https://drive.google.com/file/d/1l-ndVBoZgVm_VMkF270SU4DZTlN-6F5f/preview"
+          src="https://youtu.be/kD3DB3PJZvg"
           allow="autoplay"
         ></iframe>
       </div>
@@ -38,7 +38,7 @@ function WhatIsPipe() {
           Encuentre la documentación completa de la creación, planos,
           viabilidad, código, montaje, en{" "}
           <a
-            href="https://github.com/proyecto-pipe/pipe-server"
+            href="https://github.com/proyecto-pipe"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -48,7 +48,7 @@ function WhatIsPipe() {
         </p>
         <img
           src={image2}
-          alt="Zaida, Julian and David trabajando en la construcción de P.I.P.E."
+          alt="Zaida, Julian y David trabajando en la construcción de P.I.P.E."
           className="box3__image"
         />
       </div>

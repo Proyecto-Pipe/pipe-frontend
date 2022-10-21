@@ -29,7 +29,7 @@ function WhatIsPipe() {
         <iframe
           className="box2__video"
           title="Elevator Pitch"
-          src="https://youtu.be/kD3DB3PJZvg"
+          src="https://www.youtube.com/embed/kD3DB3PJZvg"
           allow="autoplay"
         ></iframe>
       </div>

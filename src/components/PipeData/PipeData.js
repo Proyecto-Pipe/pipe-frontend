@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Plant } from "./Plant";
+import { Plant } from "../Plant";
 import { PipeControls } from "./PipeControls";
 
 import "./PipeData.css";

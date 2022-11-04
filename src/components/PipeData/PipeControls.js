@@ -97,6 +97,13 @@ function PipeControls() {
         className="Control--pump"
       />
 
+      <div>
+        <p className="automation__title">Procesos de automatización: </p>
+        <p className="automation__p">
+          Si la luminosidad es menor al 30%, se activan las bombillas.
+        </p>
+      </div>
+
       {loading && (
         <div className="loading">
           <div className="lds-ring">

@@ -13,6 +13,7 @@ function PipeProvider({ children, password }) {
   const [isBulbOn, setIsBulbOn] = React.useState(0);
   const [isFanOn, setIsFanOn] = React.useState(0);
   const [isPumpOn, setIsPumpOn] = React.useState(0);
+  const [automation, setAutomation] = React.useState(0);
   const [lastPipeConnection, setLastPipeConnection] = React.useState(null);
 
   const [error, setError] = React.useState(false);
@@ -68,6 +69,7 @@ function PipeProvider({ children, password }) {
         isBulbOn: isBulbOn,
         isFanOn: isFanOn,
         isPumpOn: isPumpOn,
+        automation: automation,
       });
       const rawRes = await fetch(pipeApiUrl, {
         method: "POST",
@@ -105,7 +107,7 @@ function PipeProvider({ children, password }) {
   React.useEffect(() => {
     fetchPostPipeApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isBulbOn, isFanOn, isPumpOn]);
+  }, [isBulbOn, isFanOn, isPumpOn, automation]);
 
   return (
     <PipeContext.Provider
@@ -117,9 +119,11 @@ function PipeProvider({ children, password }) {
         isBulbOn,
         isFanOn,
         isPumpOn,
+        automation,
         setIsBulbOn,
         setIsFanOn,
         setIsPumpOn,
+        setAutomation,
         lastPipeConnection,
         setUpdate,
         error,

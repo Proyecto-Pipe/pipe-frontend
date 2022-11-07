@@ -39,6 +39,15 @@
   border: 2px rgb(55, 55, 55) solid;
 }
 
+.Control--disabled {
+  background-color: rgb(192, 192, 192);
+  color: #0f0f0f;
+}
+
+.Control--disabled:hover {
+  border: none;
+}
+
 .automation__title {
   font-size: 1.1rem;
 }

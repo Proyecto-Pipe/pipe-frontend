@@ -26,15 +26,21 @@ function Variable({ name, value, units, icon }) {
   );
 }
 
-function Control({ name, state, icon, color, callback }) {
+function Control({ name, state, callback, disabled, disabledName }) {
   const dinamicStyle = {
     backgroundColor:
       state === 1 ? "rgba(132, 255, 44, 0.566)" : "rgba(79, 79, 79, 0.566)",
   };
   return (
-    <button onClick={callback} className="Control" style={dinamicStyle}>
-      {!state ? "Activar " : "Desactivar "}
-      {name}
+    <button
+      onClick={callback}
+      className={disabled === 1 ? "Control Control--disabled" : "Control"}
+      style={disabled === 1 ? {} : dinamicStyle}
+      disabled={disabled === 1 ? "disabled" : ""}
+    >
+      {disabled === 1
+        ? disabledName
+        : `${!state ? "Activar " : "Desactivar "} ${name}`}
     </button>
   );
 }
@@ -48,10 +54,12 @@ function PipeControls() {
     isBulbOn,
     isFanOn,
     isPumpOn,
+    automation,
     loading,
     setIsBulbOn,
     setIsFanOn,
     setIsPumpOn,
+    setAutomation,
   } = React.useContext(PipeContext);
 
   return (
@@ -80,29 +88,39 @@ function PipeControls() {
         name="bombilla"
         state={isBulbOn}
         callback={() => setIsBulbOn(isBulbOn === 0 ? 1 : 0)}
-        className="Control--bulb"
+        disabled={automation}
+        disabledName={
+          "La bombilla se activará si la luminosidad es inferior a 50%"
+        }
       />
 
       <Control
         name="ventilador"
         state={isFanOn}
         callback={() => setIsFanOn(isFanOn === 0 ? 1 : 0)}
-        className="Control--fan"
+        disabled={automation}
+        disabledName={
+          "El ventilador se activará si la temperatura es inferior a 30%"
+        }
       />
 
       <Control
         name="bomba de agua"
         state={isPumpOn}
         callback={() => setIsPumpOn(isPumpOn === 0 ? 1 : 0)}
-        className="Control--pump"
+        disabled={automation}
+        disabledName={
+          "La bomba de agua se activará si la humedad es inferior a 10%"
+        }
       />
 
-      <div>
-        <p className="automation__title">Procesos de automatización: </p>
-        <p className="automation__p">
-          Si la luminosidad es menor al 30%, se activan las bombillas.
-        </p>
-      </div>
+      <Control
+        name="automatización"
+        state={automation}
+        callback={() => setAutomation(automation === 0 ? 1 : 0)}
+        disabled={0}
+        disabledName={"fasfas"}
+      />
 
       {loading && (
         <div className="loading">

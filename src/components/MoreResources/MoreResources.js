@@ -48,6 +48,14 @@ const resources = [
   },
 ];
 
+// {
+//   title: "",
+//   description: "",
+//   link: "",
+//   img: "",
+//   imgAlt: "",
+// },
+
 function MoreResources() {
   return (
     <div className="MoreResources">

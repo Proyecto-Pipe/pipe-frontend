@@ -13,7 +13,7 @@ import { Footer } from "../Footer/Footer";
 
 function App() {
   return (
-    <PipeProvider password={329}>
+    <PipeProvider password={3124315}>
       <div className="UI">
         <div className="App">
           <ViewsProvider>

@@ -61,3 +61,7 @@ a {
 a:hover {
   color: rgb(133, 150, 173);
 }
+
+button {
+  color: #000;
+}

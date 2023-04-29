@@ -64,7 +64,7 @@ function MoreResources() {
         alcanzar el Objetivo de Desarrollo Sostenible # 13.
       </p>
       {resources.map(({ title, description, link, img, imgAlt }) => (
-        <div>
+        <div key={title}>
           <a
             className="MoreResources__resource"
             href={link}

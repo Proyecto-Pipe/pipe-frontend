@@ -1,4 +1,4 @@
-.PipeData {
+.PipeNow {
   height: 100%;
   width: 100%;
   max-width: 600px;
@@ -12,6 +12,6 @@
     "controls controls";
 }
 
-.PipeData__controls {
+.PipeNow__controls {
   grid-area: controls;
 }

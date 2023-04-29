@@ -1,7 +1,7 @@
 import React from "react";
 
 import { WhatIsPipe } from "../components/WhatIsPipe";
-import { PipeData } from "../components/PipeData";
+import { PipeNow } from "../components/PipeNow";
 import { MoreResources } from "../components/MoreResources";
 
 const ViewsContext = React.createContext();
@@ -9,7 +9,7 @@ const ViewsContext = React.createContext();
 function ViewsProvider({ children }) {
   const [views] = React.useState([
     { name: "¿Qué es P.I.P.E.?", view: <WhatIsPipe /> },
-    { name: "Estado actual invernadero", view: <PipeData /> },
+    { name: "Estado actual invernadero", view: <PipeNow /> },
     { name: "Más recursos", view: <MoreResources /> },
   ]);
   const [currentViewIndex, setCurrentViewIndex] = React.useState(0);

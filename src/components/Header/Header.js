@@ -15,7 +15,7 @@ function Header() {
           src={logoUrl}
           alt="Logo de Pipe"
         />
-        <p className="Header__content__text"> P.I.P.E.</p>
+        <p className="Header__content__text"> PIPE</p>
       </div>
       <ViewManager />
     </header>

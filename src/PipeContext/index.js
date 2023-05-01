@@ -1,14 +1,15 @@
 import React from "react";
 
-const PipeContext = React.createContext();
-
-function PipeProvider({
-  children,
+import {
   password,
   pipeRecordsApiUrl,
   pipeNowApiUrl,
   isClientOnlineUrl,
-}) {
+} from "../env.js";
+
+const PipeContext = React.createContext();
+
+function PipeProvider({ children }) {
   const [airHumidity, setAirHumidity] = React.useState(null);
   const [soilHumidity, setSoilHumidity] = React.useState(null);
   const [temperature, setTemperature] = React.useState(null);
@@ -176,11 +177,8 @@ function PipeProvider({
         setIsPumpOn,
         setAutomation,
         lastPipeConnection,
-        setUpdate,
         error,
         loading,
-        pipeRecordsApiUrl,
-        password,
       }}
     >
       {children}

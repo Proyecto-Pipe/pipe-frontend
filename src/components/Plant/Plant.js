@@ -2,7 +2,6 @@ import React from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { PipeContext } from "../../PipeContext";
-import { Refresh } from "../Refresh";
 
 import "./Plant.css";
 
@@ -94,18 +93,14 @@ function Plant({ url }) {
 
   const { error, lastPipeConnection } = React.useContext(PipeContext);
 
-  const lastPipeConnectionDate = lastPipeConnection
-    ? new Date(lastPipeConnection)
-    : null;
-
-  const lpcd = lastPipeConnectionDate;
-  const formattedLastPipeConnection = lpcd
-    ? `Última conexión: ${lpcd
-        .toString()
-        .replace("GMT-0500", "")
-        .replace(" Standard Time)", "")
-        .replace("(", "")} `
-    : "No se pudo obtener última conexión con P.I.P.E.";
+  // https://stackoverflow.com/questions/5129624/convert-js-date-time-to-mysql-datetime#comment92061514_11150727
+  const d = new Date(lastPipeConnection);
+  const lastPipeConnectionDate =
+    error !== 400
+      ? `Fecha: ${d.toISOString().split("T")[0]}  ${
+          d.toTimeString().split(" ")[0]
+        } Colombia`
+      : "No se pudo obtener última conexión con PIPE";
 
   return (
     <div className="Plant" ref={divRef}>
@@ -118,15 +113,11 @@ function Plant({ url }) {
           {error === 502 && (
             <p>Algunos sensores no están funcionando adecuadamente</p>
           )}
-          <Refresh />
         </div>
       )}
-      {lastPipeConnection && (
-        <p className="Plant__lastPipeConnection">
-          {formattedLastPipeConnection}
-        </p>
+      {error !== 400 && (
+        <p className="Plant__lastPipeConnection">{lastPipeConnectionDate}</p>
       )}
-      {!error && <Refresh />}
     </div>
   );
 }

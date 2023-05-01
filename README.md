@@ -1,6 +1,6 @@
 ### pipe-frontend
 
-# P.I.P.E
+# PIPE
 
 [![Logo de Pipe](https://raw.githubusercontent.com/Proyecto-Pipe/pipe-frontend/main/public/logo.png "Logo de Pipe")](# "Logo de Pipe")
 
@@ -8,7 +8,7 @@
 
 Presentación el proyecto: https://youtu.be/kD3DB3PJZvg
 
-**P.I.P.E** es un invernadero inteligente enfocado a instituciones educativas que busca promover en sus estudiantes un compromiso hacia el medio ambiente.
+**PIPE** es un invernadero inteligente enfocado a instituciones educativas que busca promover en sus estudiantes un compromiso hacia el medio ambiente.
 
 - **Didáctico**: Orientado al aprendizaje para todos los rangos de edad.
 
@@ -18,7 +18,7 @@ Presentación el proyecto: https://youtu.be/kD3DB3PJZvg
 
 ## Documentación
 
-El código de P.I.P.E está dividido en 3 partes. **En cada uno de los repositorios se encuentra documentación más detallada**.
+El código de PIPE está dividido en 3 partes. **En cada uno de los repositorios se encuentra documentación más detallada**.
 
 [![documentacion imagen](https://github.com/Proyecto-Pipe/.github/blob/main/pipe-architecture.jpg?raw=true "documentacion imagen")](# "documentacion imagen")
 
@@ -30,7 +30,7 @@ El código de P.I.P.E está dividido en 3 partes. **En cada uno de los repositor
 
 ## Autores
 
-P.I.P.E ha sido creado por **[Julian Franco][julian franco]**, **Zaida Guzman** y **[David Hurtado][david hurtado]**, estudiantes del **[Colegio Agustiniano Norte][colegio agustiniano norte]**, apoyados por el profesor **[William Andres Granada Campos][william andres granada campos]**.
+PIPE ha sido creado por **[Julian Franco][julian franco]**, **Zaida Guzman** y **[David Hurtado][david hurtado]**, estudiantes del **[Colegio Agustiniano Norte][colegio agustiniano norte]**, apoyados por el profesor **[William Andres Granada Campos][william andres granada campos]**.
 
 [objetivo de desarrollo sostenible # 13]: https://www.un.org/sustainabledevelopment/es/climate-change-2/ "Objetivo de Desarrollo Sostenible # 13"
 [david hurtado]: https://santigo171.github.io/ "David Hurtado"

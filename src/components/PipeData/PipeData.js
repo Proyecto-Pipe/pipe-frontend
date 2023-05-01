@@ -3,11 +3,9 @@ import React from "react";
 // https://www.chartjs.org/docs/latest/getting-started/usage.html
 import { VariableChart } from "./VariableChart";
 import "./PipeData.css";
-
-import { PipeContext } from "../../PipeContext";
+import { password, pipeRecordsApiUrl } from "../../env";
 
 function PipeData() {
-  const { pipeRecordsApiUrl, password } = React.useContext(PipeContext);
   const [dateLabels, setDateLabels] = React.useState([]);
   const [airHumidityData, setAirHumidityData] = React.useState([]);
   const [soilHumidityData, setSoilHumidityData] = React.useState([]);
@@ -25,7 +23,7 @@ function PipeData() {
       },
     });
     const res = await rawRes.json();
-    res.variableRecord.map(
+    res.variableRecord.forEach(
       // ({ date, airHumidity, soilHumidity, temperature, light }) => {
       (record) => {
         console.log(record.date);

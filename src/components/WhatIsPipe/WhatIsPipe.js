@@ -12,7 +12,7 @@ function WhatIsPipe() {
         <img
           className="box1__image"
           src={image1}
-          alt="P.I.P.E. Invernadero inteligente"
+          alt="PIPE Invernadero inteligente"
         />
         <div className="box1__text">
           <p className="box1__text__title">
@@ -48,7 +48,7 @@ function WhatIsPipe() {
         </p>
         <img
           src={image2}
-          alt="Zaida, Julian y David trabajando en la construcción de P.I.P.E."
+          alt="Zaida, Julian y David trabajando en la construcción de PIPE"
           className="box3__image"
         />
       </div>

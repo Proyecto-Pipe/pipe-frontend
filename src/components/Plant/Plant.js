@@ -111,7 +111,7 @@ function Plant({ url }) {
     <div className="Plant" ref={divRef}>
       {error && (
         <div className="Plant__error">
-          {error === 400 && <p>No hay comunicación con P.I.P.E.</p>}
+          {error === 400 && <p>No hay comunicación con PIPE en tiempo real</p>}
           {error === 500 && (
             <p>Error del servidor, porfavor, recargar página</p>
           )}

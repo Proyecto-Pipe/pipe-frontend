@@ -91,6 +91,9 @@ function PipeProvider({
       });
       const variableRes = await rawVariableRes.json();
       const processRes = await rawProcessRes.json();
+      if (variableRes.message === "No live pipe comunication") {
+        setError(400);
+      }
       if (!silent) setLoading(false);
       setSilent(false);
       if (variableRes.lastPipeConnection !== lastPipeConnection) {
@@ -176,6 +179,8 @@ function PipeProvider({
         setUpdate,
         error,
         loading,
+        pipeRecordsApiUrl,
+        password,
       }}
     >
       {children}

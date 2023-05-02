@@ -1,12 +1,48 @@
 .PipeData {
   height: 100%;
   width: 100%;
-  max-width: 600px;
 
-  padding: 10px;
+  padding: 0 10px;
   display: grid;
+
+  overflow-y: scroll;
+}
+
+.PipeData__timelapse {
+  font-size: 1rem;
+  margin: 0 auto;
+}
+
+.PipeData__timelapse__dateinput {
+  margin: 0 10px;
+}
+/* https://francisco-marquez-job.medium.com/masterclasscss-estilar-un-input-date-sin-morir-en-el-intento-3bdad83d56a */
+.PipeData__timelapse__dateinput[type="date"] {
+  appearance: none;
+  color: #1d1d1d;
+  font-family: sans-serif;
+  font-size: 1rem;
+  border: 1px solid #ecf0f1;
+  background: #ecf0f1;
+  padding: 4px;
+  display: inline-block;
+  visibility: visible;
+  width: 140px;
+}
+.PipeData__timelapse__dateinput[type="date"]:focus {
+  color: #495057;
+  background-color: #ffffff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .PipeData__controls {
   grid-area: controls;
+}
+
+@media only screen and (min-width: 600px) {
+  .PipeData {
+    padding: 0 50px;
+  }
 }

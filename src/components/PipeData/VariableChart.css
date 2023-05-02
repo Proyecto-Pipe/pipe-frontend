@@ -1,0 +1,18 @@
+.LineChart {
+  font-size: 1rem;
+}
+
+.LineChart__title__logo {
+  height: 20px;
+  margin-right: 10px;
+  display: inline-block;
+}
+.LineChart__title__text {
+  display: inline-block;
+}
+
+.LineChart__canvas {
+  /* width: 100px; */
+  /* height: 30vh; */
+  color: #0a3b6e;
+}

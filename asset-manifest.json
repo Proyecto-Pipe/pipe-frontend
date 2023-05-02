@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/pipe-frontend/static/css/main.ad4f62b7.css",
-    "main.js": "/pipe-frontend/static/js/main.5429690b.js",
+    "main.css": "/pipe-frontend/static/css/main.0af44dac.css",
+    "main.js": "/pipe-frontend/static/js/main.e05a5d2d.js",
     "static/media/PIPE.gltf": "/pipe-frontend/static/media/PIPE.d869649f1a75ab7af7dc.gltf",
     "static/media/logo.png": "/pipe-frontend/static/media/logo.4f73fe04d64aa10fad0d.png",
     "static/media/pipe.jpg": "/pipe-frontend/static/media/pipe.fe11a5f9848a4e7ee891.jpg",
     "static/media/working.jpg": "/pipe-frontend/static/media/working.df1eed9b4a76792b0298.jpg",
     "index.html": "/pipe-frontend/index.html",
-    "main.ad4f62b7.css.map": "/pipe-frontend/static/css/main.ad4f62b7.css.map",
-    "main.5429690b.js.map": "/pipe-frontend/static/js/main.5429690b.js.map"
+    "main.0af44dac.css.map": "/pipe-frontend/static/css/main.0af44dac.css.map",
+    "main.e05a5d2d.js.map": "/pipe-frontend/static/js/main.e05a5d2d.js.map"
   },
   "entrypoints": [
-    "static/css/main.ad4f62b7.css",
-    "static/js/main.5429690b.js"
+    "static/css/main.0af44dac.css",
+    "static/js/main.e05a5d2d.js"
   ]
 }

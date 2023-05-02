@@ -13,6 +13,6 @@
 
 .LineChart__canvas {
   /* width: 100px; */
-  /* height: 30vh; */
+  height: 30vh;
   color: #0a3b6e;
 }

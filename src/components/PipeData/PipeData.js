@@ -22,7 +22,6 @@ function PipeData() {
       t.getDate()
     ).padStart(2, "0")}`
   );
-  // const dateInputRef = React.useRef(null);
 
   async function fetchRecords() {
     const rawRes = await fetch(
@@ -53,6 +52,7 @@ function PipeData() {
         setLightData((array) => [light, ...array]);
       }
     );
+    console.log(res.processRecord);
   }
 
   React.useEffect(() => {
@@ -73,7 +73,6 @@ function PipeData() {
         <input
           type="date"
           value={date}
-          // ref={dateInputRef}
           onChange={(e) => setDate(e.target.value)}
           className="PipeData__timelapse__dateinput"
         />

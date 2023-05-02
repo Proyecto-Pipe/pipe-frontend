@@ -40,7 +40,7 @@ function PipeData() {
     res.variableRecord.forEach(
       ({ date, airHumidity, soilHumidity, temperature, light }) => {
         setDateLabels((array) => {
-          const dateGMT = new Date(`${date} UTC`);
+          const dateGMT = new Date(`${date.replace(/-/g, "/")}  UTC`);
           const time = `${dateGMT.getHours()}:${String(
             dateGMT.getMinutes()
           ).padStart(2, "0")}`;

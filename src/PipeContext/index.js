@@ -26,7 +26,8 @@ function PipeProvider({ children }) {
   const [silent, setSilent] = React.useState(false);
 
   function updateUi(variableRes, processRes) {
-    if (variableRes.message === "No pipe comunication ") {
+    console.log(variableRes);
+    if (variableRes.message === "No live pipe comunication") {
       return setError(400);
     } else {
       setError(false);

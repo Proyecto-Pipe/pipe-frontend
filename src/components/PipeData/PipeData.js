@@ -1,6 +1,7 @@
 import React from "react";
 
 import { VariableChart } from "./VariableChart";
+import { Process } from "./Process";
 import { password, pipeRecordsApiUrl } from "../../env";
 import "./PipeData.css";
 
@@ -9,12 +10,26 @@ import soilHumidityIcon from "../../assets/variables/soilHumidity.png";
 import temperatureIcon from "../../assets/variables/temperature.png";
 import lightIcon from "../../assets/variables/idea.png";
 
+function twoDigits(digit) {
+  return String(digit).padStart(2, "0");
+}
+
+function formatDatetime(date, addSeconds = false) {
+  const dateGMT = new Date(`${date.replace(/-/g, "/")}  UTC`);
+  const time = `${dateGMT.getHours()}:${twoDigits(dateGMT.getMinutes())}${
+    addSeconds ? `:${twoDigits(dateGMT.getSeconds())}` : ""
+  }`;
+  return time;
+}
+
 function PipeData() {
   const [dateLabels, setDateLabels] = React.useState([]);
   const [airHumidityData, setAirHumidityData] = React.useState([]);
   const [soilHumidityData, setSoilHumidityData] = React.useState([]);
   const [temperatureData, setTemperatureData] = React.useState([]);
   const [lightData, setLightData] = React.useState([]);
+
+  const [processHistory, setProcessHistory] = React.useState([]);
 
   const t = new Date();
   const [date, setDate] = React.useState(
@@ -40,11 +55,7 @@ function PipeData() {
     res.variableRecord.forEach(
       ({ date, airHumidity, soilHumidity, temperature, light }) => {
         setDateLabels((array) => {
-          const dateGMT = new Date(`${date.replace(/-/g, "/")}  UTC`);
-          const time = `${dateGMT.getHours()}:${String(
-            dateGMT.getMinutes()
-          ).padStart(2, "0")}`;
-          return [time, ...array];
+          return [formatDatetime(date), ...array];
         });
         setAirHumidityData((array) => [airHumidity, ...array]);
         setSoilHumidityData((array) => [soilHumidity, ...array]);
@@ -52,7 +63,7 @@ function PipeData() {
         setLightData((array) => [light, ...array]);
       }
     );
-    console.log(res.processRecord);
+    setProcessHistory(res.processRecord);
   }
 
   React.useEffect(() => {
@@ -107,7 +118,22 @@ function PipeData() {
           color="#4e4207"
         />
       </div>
-      <div className="PipeData__process"></div>
+      <div className="PipeData__process">
+        <h2 className="PipeData__process__title">Historial de procesos</h2>
+        {processHistory.map(
+          ({ date, isBulbOn, isPumpOn, isFanOn, automation }, index) => (
+            <Process
+              date={formatDatetime(date, true)}
+              isBulbOn={isBulbOn}
+              isPumpOn={isPumpOn}
+              isFanOn={isFanOn}
+              automation={automation}
+              key={`${date}${isBulbOn}${isPumpOn}${isFanOn}${automation}`}
+              isTheLast={index === 0}
+            />
+          )
+        )}
+      </div>
     </div>
   );
 }

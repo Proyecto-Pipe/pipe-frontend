@@ -1,0 +1,32 @@
+.Process {
+  margin: 20px 10px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.Process__date {
+  font-size: 1rem;
+  grid-column: span 4;
+}
+
+.ProcessStatus {
+  display: flex;
+  padding: 7px;
+  font-size: 0.9rem;
+  color: #0f0f0f;
+
+  background-color: rgb(55, 55, 55);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: 600px) {
+  .Process {
+    grid-gap: 0 10px;
+  }
+  .ProcessStatus {
+    border-radius: 15px;
+  }
+}

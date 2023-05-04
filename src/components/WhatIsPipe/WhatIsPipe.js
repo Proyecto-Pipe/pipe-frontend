@@ -2,7 +2,7 @@ import React from "react";
 
 import "./WhatIsPipe.css";
 
-import image1 from "../../assets/whatispipe/pipe.jpg";
+import image1 from "../../assets/whatispipe/pipe.png";
 import image2 from "../../assets/whatispipe/working.jpg";
 
 function WhatIsPipe() {

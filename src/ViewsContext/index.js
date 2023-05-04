@@ -9,9 +9,9 @@ const ViewsContext = React.createContext();
 
 function ViewsProvider({ children }) {
   const [views] = React.useState([
-    { name: "Historial de estado PIPE", view: <PipeData /> },
     { name: "¿Qué es PIPE?", view: <WhatIsPipe /> },
     { name: "Estado actual de PIPE", view: <PipeNow /> },
+    { name: "Historial de estado PIPE", view: <PipeData /> },
     { name: "Más recursos", view: <MoreResources /> },
   ]);
   const [currentViewIndex, setCurrentViewIndex] = React.useState(0);

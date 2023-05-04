@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "BrixtonSansTc";
+  src: local("BrixtonSansTc"),
+    url("../../assets/BrixtonSansTC-Regular.otf") format("truetype");
+  font-weight: bold;
+}
+
 .Header {
   display: grid;
   /* justify-content: center; */
@@ -17,6 +24,8 @@
 
 .Header__content__text {
   margin-left: 20px;
-  font-size: 3.3rem;
+  padding-top: 15px;
+  font-size: 3.6rem;
   color: #426b33;
+  font-family: "BrixtonSansTc", sans-serif;
 }

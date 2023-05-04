@@ -3,6 +3,7 @@ import React from "react";
 import "./Header.css";
 
 import logoUrl from "../../assets/logo.png";
+import "../../assets/BrixtonSansTC-Regular.otf";
 
 import { ViewManager } from "../ViewManager";
 

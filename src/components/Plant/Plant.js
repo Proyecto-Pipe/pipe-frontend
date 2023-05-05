@@ -13,9 +13,7 @@ function importPlantModel(url) {
       (gltf) => {
         resolve(gltf.scene);
       },
-      function (xhr) {
-        // console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-      },
+      function (xhr) {},
       function (error) {
         reject(error);
       }

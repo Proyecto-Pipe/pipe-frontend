@@ -3,4 +3,6 @@ export const pipeRecordsApiUrl =
 export const pipeNowApiUrl = "https://pipe-server.herokuapp.com/v1/pipenow";
 export const isClientOnlineUrl =
   "https://pipe-server.herokuapp.com/v1/isclientonline";
+export const isUserCodeValidUrl =
+  "https://pipe-server.herokuapp.com/v1/isusercodevalid";
 export const password = 3124315;

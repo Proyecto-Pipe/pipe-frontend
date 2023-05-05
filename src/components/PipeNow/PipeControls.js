@@ -1,6 +1,7 @@
 import React from "react";
 
 import { PipeContext } from "../../PipeContext";
+import { InsertUserCode } from "./InsertUserCode";
 
 import "./PipeControls.css";
 
@@ -60,7 +61,18 @@ function PipeControls() {
     setIsFanOn,
     setIsPumpOn,
     setAutomation,
+    displayInsertUserCode,
+    setDisplayInsertUserCode,
+    isUserCodeValid,
   } = React.useContext(PipeContext);
+
+  function updateProcess(processSetter, processValue) {
+    if (isUserCodeValid) {
+      processSetter(processValue);
+    } else {
+      setDisplayInsertUserCode(true);
+    }
+  }
 
   return (
     <div className="PipeControls">
@@ -83,45 +95,41 @@ function PipeControls() {
         icon={temperatureIcon}
       />
       <Variable name="Luminosidad" value={light} units="%" icon={lightIcon} />
-
       <Control
         name="bombilla"
         state={isBulbOn}
-        callback={() => setIsBulbOn(isBulbOn === 0 ? 1 : 0)}
+        callback={() => updateProcess(setIsBulbOn, isBulbOn === 0 ? 1 : 0)}
         disabled={automation}
         disabledName={
           "La bombilla se activará si la luminosidad es inferior a 50%"
         }
       />
-
       <Control
         name="ventilador"
         state={isFanOn}
-        callback={() => setIsFanOn(isFanOn === 0 ? 1 : 0)}
+        callback={() => updateProcess(setIsFanOn, isFanOn === 0 ? 1 : 0)}
         disabled={automation}
         disabledName={
           "El ventilador se activará si la temperatura es inferior a 30%"
         }
       />
-
       <Control
         name="bomba de agua"
         state={isPumpOn}
-        callback={() => setIsPumpOn(isPumpOn === 0 ? 1 : 0)}
+        callback={() => updateProcess(setIsPumpOn, isPumpOn === 0 ? 1 : 0)}
         disabled={automation}
         disabledName={
           "La bomba de agua se activará si la humedad es inferior a 10%"
         }
       />
-
       <Control
         name="automatización"
         state={automation}
-        callback={() => setAutomation(automation === 0 ? 1 : 0)}
+        callback={() => updateProcess(setAutomation, automation === 0 ? 1 : 0)}
         disabled={0}
         disabledName={"fasfas"}
       />
-
+      {displayInsertUserCode && <InsertUserCode />}
       {loading && (
         <div className="loading">
           <div className="lds-ring">

@@ -25,8 +25,8 @@ function Process({ date, isBulbOn, isPumpOn, isFanOn, automation, isTheLast }) {
         {isTheLast ? " (Estado actual)" : ""}
       </p>
       <ProcessStatus process={isBulbOn} name={"Bombilla"} />
-      <ProcessStatus process={isPumpOn} name={"Ventilador"} />
-      <ProcessStatus process={isFanOn} name={"Bomba de agua"} />
+      <ProcessStatus process={isFanOn} name={"Ventilador"} />
+      <ProcessStatus process={isPumpOn} name={"Bomba de agua"} />
       <ProcessStatus process={automation} name={"Automatización"} />
     </div>
   );

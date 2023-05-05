@@ -5,7 +5,10 @@ import {
   pipeRecordsApiUrl,
   pipeNowApiUrl,
   isClientOnlineUrl,
+  isUserCodeValidUrl,
 } from "../env.js";
+
+import { useLocalStorage } from "../useLocalStorage.js";
 
 const PipeContext = React.createContext();
 
@@ -25,21 +28,34 @@ function PipeProvider({ children }) {
   const [update, setUpdate] = React.useState(true);
   const [silent, setSilent] = React.useState(false);
 
-  function updateUi(variableRes, processRes) {
-    if (variableRes.message === "No live pipe comunication") {
+  const [isUserCodeValid, setIsUserCodeValid] = React.useState(false);
+  const [loadingIsUserCodeValid, setLoadingIsUserCodeValid] =
+    React.useState(false);
+  const [displayInsertUserCode, setDisplayInsertUserCode] =
+    React.useState(false);
+  const {
+    item: userCode,
+    saveItem: saveUserCode,
+    loading: loadingUserCode,
+    // eslint-disable-next-line no-unused-vars
+    error: errorUserCode,
+  } = useLocalStorage("PIPE_USER_CODE_V1", undefined);
+
+  function updateUi(data) {
+    if (data.message === "No live pipe comunication") {
       return setError(400);
     } else {
       setError(false);
     }
-    setAirHumidity(variableRes.airHumidity);
-    setSoilHumidity(variableRes.soilHumidity);
-    setTemperature(variableRes.temperature);
-    setLight(variableRes.light);
-    setIsBulbOn(processRes.isBulbOn);
-    setIsFanOn(processRes.isFanOn);
-    setIsPumpOn(processRes.isPumpOn);
-    setAutomation(processRes.automation);
-    setLastPipeConnection(variableRes.lastPipeConnection);
+    setAirHumidity(data.airHumidity);
+    setSoilHumidity(data.soilHumidity);
+    setTemperature(data.temperature);
+    setLight(data.light);
+    setIsBulbOn(data.isBulbOn);
+    setIsFanOn(data.isFanOn);
+    setIsPumpOn(data.isPumpOn);
+    setAutomation(data.automation);
+    setLastPipeConnection(data.lastPipeConnection);
     if (
       !parseFloat(airHumidity) ||
       !parseFloat(soilHumidity) ||
@@ -74,7 +90,7 @@ function PipeProvider({ children }) {
     console.log("fetchGetPipeApi");
     try {
       if (!silent) setLoading(true);
-      const rawVariableRes = await fetch(pipeNowApiUrl, {
+      const rawData = await fetch(pipeNowApiUrl, {
         method: "GET",
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -82,23 +98,14 @@ function PipeProvider({ children }) {
           "is-client": true,
         },
       });
-      const rawProcessRes = await fetch(pipeRecordsApiUrl, {
-        method: "GET",
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          password,
-          "is-pipe": true,
-        },
-      });
-      const variableRes = await rawVariableRes.json();
-      const processRes = await rawProcessRes.json();
-      if (variableRes.message === "No live pipe comunication") {
+      const data = await rawData.json();
+      if (data.message === "No live pipe comunication") {
         setError(400);
       }
       if (!silent) setLoading(false);
       setSilent(false);
-      if (variableRes.lastPipeConnection !== lastPipeConnection) {
-        updateUi(variableRes, processRes);
+      if (data.lastPipeConnection !== lastPipeConnection) {
+        updateUi(data);
       }
     } catch (err) {
       setLoading(false);
@@ -116,22 +123,47 @@ function PipeProvider({ children }) {
         isPumpOn: isPumpOn,
         automation: automation,
       });
-      await fetch(pipeRecordsApiUrl, {
+      const res = await fetch(pipeRecordsApiUrl, {
         method: "POST",
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
           password,
           "is-client": true,
+          "user-code": userCode,
         },
         body: body,
       });
       setLoading(false);
-      // updateUi(res);
+      if (res.status === 403) {
+        setDisplayInsertUserCode(true);
+      }
     } catch (err) {
       setLoading(false);
       setError(500);
     }
+  }
+
+  async function checkIfUserCodeIsValid() {
+    console.log("checkIfUserCodeIsValid");
+    setLoadingIsUserCodeValid(true);
+    const rawRes = await fetch(isUserCodeValidUrl, {
+      method: "GET",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+        password,
+        "is-client": true,
+        "user-code": userCode,
+      },
+    });
+    const res = await rawRes.json();
+    if (res.message === "User code invalid") {
+      setIsUserCodeValid(false);
+    } else if (res.message === "User code valid") {
+      setIsUserCodeValid(true);
+    }
+    setLoadingIsUserCodeValid(false);
   }
 
   React.useEffect(() => {
@@ -154,12 +186,28 @@ function PipeProvider({ children }) {
       isBulbOn !== null &&
       isFanOn !== null &&
       isPumpOn !== null &&
-      automation !== null
+      automation !== null &&
+      isUserCodeValid === true
     ) {
       fetchPostPipeApi();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBulbOn, isFanOn, isPumpOn, automation]);
+
+  React.useEffect(() => {
+    checkIfUserCodeIsValid();
+    if (isUserCodeValid === true) {
+      setDisplayInsertUserCode(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userCode, isUserCodeValid]);
+
+  React.useEffect(() => {
+    if (loadingUserCode === false) {
+      checkIfUserCodeIsValid();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadingUserCode]);
 
   return (
     <PipeContext.Provider
@@ -179,6 +227,12 @@ function PipeProvider({ children }) {
         lastPipeConnection,
         error,
         loading,
+        userCode,
+        saveUserCode,
+        isUserCodeValid,
+        displayInsertUserCode,
+        setDisplayInsertUserCode,
+        loadingIsUserCodeValid,
       }}
     >
       {children}

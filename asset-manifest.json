@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/pipe-frontend/static/css/main.95b3dd82.css",
-    "main.js": "/pipe-frontend/static/js/main.f229a1b4.js",
+    "main.css": "/pipe-frontend/static/css/main.31b575ed.css",
+    "main.js": "/pipe-frontend/static/js/main.8964aac2.js",
+    "static/media/pipe.png": "/pipe-frontend/static/media/pipe.38bf875dcfe2bbbb01fb.png",
     "static/media/PIPE.gltf": "/pipe-frontend/static/media/PIPE.d869649f1a75ab7af7dc.gltf",
     "static/media/logo.png": "/pipe-frontend/static/media/logo.4f73fe04d64aa10fad0d.png",
-    "static/media/pipe.jpg": "/pipe-frontend/static/media/pipe.fe11a5f9848a4e7ee891.jpg",
+    "static/media/BrixtonSansTC-Regular.otf": "/pipe-frontend/static/media/BrixtonSansTC-Regular.4db39b44776553921317.otf",
     "static/media/working.jpg": "/pipe-frontend/static/media/working.df1eed9b4a76792b0298.jpg",
     "index.html": "/pipe-frontend/index.html",
-    "main.95b3dd82.css.map": "/pipe-frontend/static/css/main.95b3dd82.css.map",
-    "main.f229a1b4.js.map": "/pipe-frontend/static/js/main.f229a1b4.js.map"
+    "main.31b575ed.css.map": "/pipe-frontend/static/css/main.31b575ed.css.map",
+    "main.8964aac2.js.map": "/pipe-frontend/static/js/main.8964aac2.js.map"
   },
   "entrypoints": [
-    "static/css/main.95b3dd82.css",
-    "static/js/main.f229a1b4.js"
+    "static/css/main.31b575ed.css",
+    "static/js/main.8964aac2.js"
   ]
 }

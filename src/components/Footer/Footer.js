@@ -6,14 +6,15 @@ function Footer() {
   return (
     <div className="Footer">
       <a
-        href="https://www.instagram.com/pipe_can/"
+        href="https://www.instagram.com/pipe_sostenible/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Instagram @pipe_can
+        Instagram @pipe_sostenible
       </a>
       <p>
-        Zaida Guzmán, Julian Franco, David Hurtado, profesor William Granada
+        Zaida Guzmán, David Hurtado, Andrés Joya, Juan Cuervo, profe William
+        Granada
       </p>
       <a
         href="https://agustinianonorte.edu.co/"
